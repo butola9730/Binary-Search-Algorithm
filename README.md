@@ -1,3 +1,3 @@
-# Diploma_Project
+# Binary Search Algorithm
 
- shorting array
+ 
