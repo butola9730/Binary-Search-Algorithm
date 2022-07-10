@@ -1,66 +1,40 @@
-Binary Search Algorithm by C++
 
-#include < iostream >
-  using namespace std;
+#include <bits/stdc++.h>
+using namespace std;
+ 
 
-int binarySearchalgo(int arr[], int left, int right, int x) {
-  while (left <= right) {
-    int mid = left + (right - left) / 2;
-
-    if (arr[mid] == x) {
-      return mid;
-    } else if (arr[mid] < x) {
-      left = mid + 1;
-    } else {
-      right = mid - 1;
+int binarySearch(int arr[], int l, int r, int x)
+{
+    if (r >= l) {
+        int mid = l + (r - l) / 2;
+ 
+      
+        if (arr[mid] == x)
+            return mid;
+ 
+       
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+ 
+        
+        return binarySearch(arr, mid + 1, r, x);
     }
-  }
-
-  return -1;
+ 
+ 
+    return -1;
 }
-
-int main() {
-  int myarr[10];
-  int num;
-  int output;
-
-  cout << "Please enter 10 elements ASCENDING order" << endl;
-  for (int i = 0; i < 10; i++) {
-    cin >> myarr[i];
-  }
-  cout << "Please enter an element to search" << endl;
-  cin >> num;
-
-  output = binarySearch(myarr, 0, 9, num);
-
-  if (output == -1) {
-    cout << "No Match Found" << endl;
-  } else {
-    cout << "Match found at position: " << output << endl;
-  }
-
-  return 0;
+ 
+int main(void)
+{
+    int arr[] = { 2, 3, 4, 10, 40 };
+    int x = 10;
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int result = binarySearch(arr, 0, n - 1, x);
+    (result == -1)
+        ? cout << "Element is not present in array"
+        : cout << "Element is present at index " << result;
+    return 0;
 }
-
-Binary Search Algorithm By Python
-
-def binary_search(item_list,item):
-	first = 0
-	last = len(item_list)-1
-	found = False
-	while( first<=last and not found):
-		mid = (first + last)//2
-		if item_list[mid] == item :
-			found = True
-		else:
-			if item < item_list[mid]:
-				last = mid - 1
-			else:
-				first = mid + 1	
-	return found
-	
-print(binary_search([1,2,3,5,8], 6))
-print(binary_search([1,2,3,5,8], 5))
 
 
 
